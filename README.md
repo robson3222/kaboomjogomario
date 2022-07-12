@@ -1,6 +1,6 @@
 # Sobre o jogo
 
-Jogo feito por min foi usado o javascript e biblioteca kaboom 
+Jogo (atualizando fases), feito por min foi usado o javascript e biblioteca kaboom 
 
 
 
@@ -11,7 +11,7 @@ Jogo feito por min foi usado o javascript e biblioteca kaboom
 
 ## Tecnologias utilizadas
 
-- javascrypt
+- javascript
 - biblioteca kaboom
 
 
