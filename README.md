@@ -1,22 +1,20 @@
-# Sobre o projeto
+# Sobre o jogo
 
-Projeto feito por min usado no Front-end biblioteca javascrip kaboom 
+Jogo feito por min foi usado o javascript e biblioteca kaboom 
 
 
 
 ## Layout web
-![Web 1](https://github.com/robson3222/consumindo-umapi-com-react/blob/main/topzerafilme.png)
+![Web 1](https://github.com/robson3222/kaboomjogomario/blob/main/telainicial.png)
 
 
 
 # Tecnologias utilizadas
 
-## Front end
-- CSS 
-- ReactJS
+- javascrypt
+-biblioteca kaboom
 
-## Front end web
-Pré-requisitos: npm / yarn
+
 
 
 
