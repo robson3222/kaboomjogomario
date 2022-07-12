@@ -9,10 +9,10 @@ Jogo feito por min foi usado o javascript e biblioteca kaboom
 
 
 
-# Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - javascrypt
--biblioteca kaboom
+- biblioteca kaboom
 
 
 
