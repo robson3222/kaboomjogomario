@@ -55,9 +55,29 @@ scene("game", () => {
         ')': [sprite('pipe-bottom-right'), solid(), scale(0.5)],
         '-': [sprite('pipe-top-left'), solid(), scale(0.5), 'pipe'],
         '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
+        '^': [sprite('evil-shroom'), solid(), 'dangerous'],
+        '#': [sprite('mushroom'), solid(), 'mushroom', body()],
+        '!': [sprite('blue-block'), solid(), scale(0.5)],
     }
 
     const gameLevel = addLevel(map, levelCfg)
+
+     const socoreLabel = add ([
+        text('test'),
+        pos(30, 6),
+        layer('ui'),
+        {
+            value: 'test',
+        }
+    ])
+    add([text('level ' + 'test', pos(4,6))])
+
+    const player = add([
+        sprite('mario'), solid(),
+        pos(30,0),
+        body(),
+        origin('bot')
+    ])
 
 })
 
