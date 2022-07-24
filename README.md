@@ -1,6 +1,6 @@
 # Sobre o jogo
 
-Jogo (atualizando fases), feito por min foi usado o javascript e biblioteca kaboom 
+Meu primeiro Jogo, biblioteca kaboom javascript. 
 
 
 
