@@ -7,7 +7,7 @@ kaboom({
 })
 
 
-const MOVE_SPEED = 120
+const MOVE_SPEED = 160
 const JUMP_FORCE = 460
 const BIG_JUMP_FORCE = 550
 let CURRENT_JUMP_FORCE = JUMP_FORCE
@@ -16,6 +16,7 @@ const ENEMY_SPEED = 20
 
 
 let isJumping = true
+let isBig = false
 
 loadRoot('./')
 
@@ -23,7 +24,21 @@ loadSprite('coin', './wbKxhcd.png')
 loadSprite('evil-shroom', './KPO3fR9.png')
 loadSprite('brick', './pogC9x5.png')
 loadSprite('block', './M6rwarW.png')
-loadSprite('mario', './Wb1qfhK.png')
+
+loadSprite('mario', './marioImgur.png', {
+  sliceX: 3.9,
+  anims: {
+      idle: {
+        from: 0,
+        to: 0,
+      },
+      move: {
+        from: 1,
+        to: 2
+      },
+  },
+})
+
 loadSprite('mushroom', './0wMd92p.png')
 loadSprite('surprise', './gesQ1KP.png')
 loadSprite('unboxed', './bdrLpi6.png')
@@ -43,16 +58,16 @@ scene("game", ({ level , score }) => {
 
   const maps = [
     [
-      '                                                                                            ',
-      '                                                                                            ',
-      '                                                                                            ',
-      '                                                                                            ',
-      '                                                                                            ',
-      '     %   =*=%=         =                                                                    ',
-      '                      =                                       $$$$$                         ',
-      '                     =      -+               %          *        $$$$$    *  *        -+     ',
-      '                    ^   ^   ()                                                        ()    ',
-      '==============================   ===========================================================',
+      '                                                                                                                                                      ',
+      '                                                                                                                                                      ',
+      '                                                                                                                                                      ',
+      '                                                                                                                                                      ',
+      '                                                                                                                                                      ',
+      '     %   =*=%=         =                                                                                                                              ',
+      '                      =                                       $$$$$                             $    $         $                                      ',
+      '                     =      -+               %          *        $$$$$    *  *        -+    = =  $   $   $       $           %                 -+     ',
+      '                    ^   ^   ()                                                        ()                                             ^^^^^^^^  ()     ',
+      '==============================   =====================================================================================================================',
     ],
     [
       '£                                       £',
@@ -105,7 +120,7 @@ scene("game", ({ level , score }) => {
   const gameLevel = addLevel(maps[level], levelCfg)
 
   const scoreLabel = add([
-    text('coin: '  + score, 10),
+    text('score: '  +score, 10),
     pos(12, 5),
     layer('ui'),
     {
@@ -146,11 +161,18 @@ scene("game", ({ level , score }) => {
   }
 
   const player = add([
-    sprite('mario'), solid(),
-    pos(30, 0),
+    sprite('mario',{
+      aninSpeed: 0.1,
+      frame: 0
+    }),
+     solid(),
+    pos(60, 0),
     body(),
     big(),
-    origin('bot')
+    origin('bot'),
+    {
+        speed:120,
+    }
   ])
 
   action('mushroom', (m) => {
@@ -205,7 +227,8 @@ scene("game", ({ level , score }) => {
     keyPress('down', () => {
       go('game', {
         level: (level + 1) % maps.length,
-        score: scoreLabel.value
+        score: scoreLabel.value,
+        Big: isBig
       })
     })
   })
@@ -219,6 +242,30 @@ scene("game", ({ level , score }) => {
     player.flipX(false)
     player.move(MOVE_SPEED, 0)
   })
+  
+ 
+
+
+//animate
+  keyPress('left', () =>{
+    player.flipX(true)
+    player.play('move')
+  })
+
+  keyPress('right', () =>{
+    player.flipX(false)
+    player.play('move')
+  })
+
+
+keyRelease('left', () => {
+  player.play('idle')
+})
+
+keyRelease('right', () => {
+  player.play('idle')
+})
+
 
   player.action(() => {
     if(player.grounded()) {
@@ -234,8 +281,11 @@ scene("game", ({ level , score }) => {
   })
 })
 
-scene('lose', ({ score }) => {
-  add([ text(score, 32), origin('center'), pos(width()/2, height()/ 2)])
+scene("lose", ({ score }) => {
+  add([ text('Aperte enter vc Perdeu, total de moedas: ' +score, 9), origin('center'), pos(width()/2, height()/2)])
+  keyPress('enter', () => {
+    go("game", {level: 0, score: 0, big: isBig,})
+  })
 })
 
 go("game", { level: 0, score: 0})
