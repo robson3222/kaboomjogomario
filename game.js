@@ -64,8 +64,8 @@ scene("game", ({ level , score }) => {
       '                                                                                                                                                      ',
       '                                                                                                                                                      ',
       '     %   =*=%=         =                                                                                                                              ',
-      '                      =                                       $$$$$                             $    $         $                                      ',
-      '                     =      -+               %          *        $$$$$    *  *        -+    = =  $   $   $       $           %                 -+     ',
+      '                      =                         %          *    $$$$$            **              $    $         $            %                         ',
+      '                     =      -+                                   $$$$$                -+    = =  $   $   $       $                             -+     ',
       '                    ^   ^   ()                                                        ()                                             ^^^^^^^^  ()     ',
       '==============================   =====================================================================================================================',
     ],
@@ -282,7 +282,7 @@ keyRelease('right', () => {
 })
 
 scene("lose", ({ score }) => {
-  add([ text('Aperte enter vc Perdeu, total de moedas: ' +score, 9), origin('center'), pos(width()/2, height()/2)])
+  add([ text('Aperte enter... vc Perdeu, total de moedas: ' +score, 9), origin('center'), pos(width()/2, height()/2)])
   keyPress('enter', () => {
     go("game", {level: 0, score: 0, big: isBig,})
   })
